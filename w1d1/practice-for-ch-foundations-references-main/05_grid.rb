@@ -3,7 +3,15 @@
 # n subarrays, each of length m).
 
 def grid(n, m)
-  
+    two_d_array = []
+    n.times {
+        sub_arr = []
+        m.times {
+            sub_arr << nil
+        }
+        two_d_array << sub_arr
+    }
+    two_d_array
 end
 
 result_1 = grid(2, 3)

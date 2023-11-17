@@ -1,1 +1,0 @@
-p [1,2,3,4].inject(10) {|acc, el| acc + el}

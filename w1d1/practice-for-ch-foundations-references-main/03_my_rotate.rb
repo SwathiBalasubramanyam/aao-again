@@ -12,7 +12,14 @@
 # same before and after calling your method.
 
 def my_rotate!(array, amt)
-    amt.times{array.rotate!}
+    if amt > 0
+        amt.times{array.rotate!}
+    else
+        (-amt).times {
+            ele = array.pop
+            array.unshift(ele)
+        }
+    end
     array
 end
 
