@@ -14,23 +14,36 @@ Array.prototype.myMap = function(callback){
     }
 }
 
-Array.prototype.myReduce = function(callback, initialValue){
-    let accumulator;
-    let arr = this;
+// Array.prototype.myReduce = function(callback, initialValue){
+//     let accumulator;
+//     let arr = this;
 
-    if (initialValue){
-        accumulator = initialValue;
-    } else {
-        accumulator = this[0];
-        arr = this.slice(1);
-    }
+//     if (initialValue){
+//         accumulator = initialValue;
+//     } else {
+//         accumulator = this[0];
+//         arr = this.slice(1);
+//     }
 
-    for(let idx=0; idx<arr.length; idx++){
-        accumulator = callback(accumulator, arr[idx]);
-    }
-    return accumulator;
-}
+//     for(let idx=0; idx<arr.length; idx++){
+//         accumulator = callback(accumulator, arr[idx]);
+//     }
+//     return accumulator;
+// }
 
 let arr = [1,2,3,4];
 
-console.log(arr.myReduce((acc, el) => acc + el, 5))
+Array.prototype.myReduce = function(callback, initialVal){
+    let arr = this;
+    if (initialVal === undefined){
+        initialVal = arr[0];
+        arr = arr.slice(1);
+    }
+    arr.myEach(function(el){
+        initialVal = callback(initialVal, el);
+    })
+    
+    return initialVal
+}
+
+console.log(arr.myReduce((acc, el) => acc + el, 0));

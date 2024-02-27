@@ -24,19 +24,27 @@ Array.prototype.twoSum = function(){
     return pairs;
 }
 
+
+
 console.log([-1, 0, 2, -2, 1].twoSum());
 
 Array.prototype.transpose = function() {
-    let newArr = [];
+    
+    let rows = this.length;
+    let cols = this[0].length;
 
-    for(let idx=0; idx<this.length; idx++){
-        let subArr = [];
-        for(let jdx=0; jdx<this[0].length; jdx++){
-            subArr.push(this[jdx][idx]);
+    let transArr = new Array(rows).fill(null).map(() => 
+        new Array(cols).fill(0)
+    );
+
+    for(let i=0; i<rows; i++){
+        for(let j=0; j<cols; j++){
+            transArr[j][i] = this[i][j];
         }
-        newArr.push(subArr);
     }
-    return newArr;
+
+    return transArr;
 }
+
 
 console.log([[0, 1, 2], [3, 4, 5], [6, 7, 8]].transpose());
