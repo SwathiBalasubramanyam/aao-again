@@ -120,5 +120,15 @@ function mergesort(arr){
 console.log(mergesort([2,1,4,3]))
 
 function subsets(arr){
+    if(arr.length === 1){
+        return [arr];
+    }
 
+    let first = arr[0];
+    let restSubSets = subsets(arr.slice(1));
+
+    let includeFirst = restSubSets.map(subArr => [first].concat(subArr));
+    return includeFirst.concat(restSubSets);
 }
+
+console.log(subsets([1]))
