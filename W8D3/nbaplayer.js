@@ -1,16 +1,16 @@
-function NBAPlayer(name, team, pos){
+function NBAPlayer(name, team, pos) {
     this.name = name;
     this.team = team;
-    this.pos = pos
+    this.pos = pos;
 }
 
-const curry = new NBAPlayer("Diya Arunkumar", "giants", 1)
+const curry = new NBAPlayer("not curry", "some team", 1)
 
-NBAPlayer.prototype.dunk = function () {
-    console.log("this is the dunk method on the nba prototype");
-    console.log(`this is the name ${this.name}`)
+
+NBAPlayer.prototype.dunk = function(){
+    console.log("this is the dunk method")
 }
 
-curry.dunk();
-console.log(curry.prototype);
-console.log(NBAPlayer.prototype)
+console.log(curry)
+console.log("this is curry's proto", curry.__proto__)
+console.log("this is curry's prototype", curry.prototype)
