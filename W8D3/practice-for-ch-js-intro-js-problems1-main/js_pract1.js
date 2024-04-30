@@ -7,7 +7,8 @@ function madLib(verb, adj, noun){
 console.log(madLib('make', 'best', 'guac'));
 
 function isSubstring(searchString, subString){
-    return searchString.indexOf(subString) >= 0;
+    // return searchString.indexOf(subString) >= 0;
+    return searchString.includes(subString);
 }
 
 console.log(isSubstring("time to program", "time"));
@@ -53,17 +54,19 @@ false
 
 
 function sumOfNPrimes(num){
-    let idx = 2
-    let primeArr = []
-    while (primeArr.length < num){
-        if (isPrime(idx)){
-            primeArr.push(idx);
+    let primeSum = 0
+    let start = 2
+
+    while(num > 0) {
+
+        if (isPrime(start)){
+            primeSum += start
+            num -= 1
         }
-        idx++;
+        start += 1
     }
-    return primeArr.reduce((acc, currentVal) => {
-        return acc + currentVal
-    }, 0)
+
+    return primeSum
 }
 
-console.log(sumOfNPrimes(4))
+console.log(sumOfNPrimes(1))

@@ -27,6 +27,7 @@ mysteryScoping2();
 //     }
 //     console.log(x);
 // }
+// mysteryScoping3();
 
 function mysteryScoping4() {
     let x = 'out of block';
@@ -47,3 +48,5 @@ mysteryScoping4();
 //     let x = 'out of block again';
 //     console.log(x);
 // }
+
+// mysteryScoping5();
