@@ -8,9 +8,7 @@ Game.prototype.printStacks = function(){
 
 Game.prototype.run = function(completionCallback){
     while (!this.isWon()){
-        this.promtMove((startTowerIdx, endTowerIdx) => {
-            return this.move(startTowerIdx, endTowerIdx);
-        });
+        this.promtMove(this.move.bind(this));
     }
     completionCallback();
 }
@@ -31,7 +29,6 @@ Game.prototype.isValidMove = function(startTowerIdx, endTowerIdx){
     if ((!lenStartTower > 0) || (discAtEnd && discAtEnd > discAtStart)){
         return false;
     }
-
     return true;
 }
 
@@ -48,7 +45,7 @@ Game.prototype.move = function(startTowerIdx, endTowerIdx){
 
 Game.prototype.isWon = function(){
     let compArr = [3,2,1];
-    return this.towers[2].length && this.towers[2].every((val, idx) => val === compArr[idx]);
+    return this.towers[2].length === 3 && this.towers[2].every((val, idx) => val === compArr[idx]);
 }
 let game1 = new Game();
 game1.run(() => console.log("Game over!!"));
