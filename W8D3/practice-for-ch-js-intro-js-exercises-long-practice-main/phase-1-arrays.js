@@ -3,10 +3,20 @@
 let arr = [1,1,1,1,2,3,3,3,3];
 
 // console.log(arr.uniq());
-Array.prototype.uniq = function(){
-    let newSet = new Set(this);
-    
-    return Array.from(newSet);
+// Array.prototype.uniq = function(){
+//     let newSet = new Set(this);
+//     return Array.from(newSet);
+// }
+
+Array.prototype.uniq = function() {
+    let resArr = []
+
+    this.forEach(function(el){
+        if(!resArr.includes(el)){
+            resArr.push(el)
+        }
+    })
+    return resArr;
 }
 
 console.log(arr.uniq());
@@ -28,22 +38,39 @@ Array.prototype.twoSum = function(){
 
 console.log([-1, 0, 2, -2, 1].twoSum());
 
-Array.prototype.transpose = function() {
+// Array.prototype.transpose = function() {
     
+//     let rows = this.length;
+//     let cols = this[0].length;
+
+//     let transArr = new Array(rows).fill(null).map(() => 
+//         new Array(cols).fill(0)
+//     );
+
+//     for(let i=0; i<rows; i++){
+//         for(let j=0; j<cols; j++){
+//             transArr[j][i] = this[i][j];
+//         }
+//     }
+
+//     return transArr;
+// }
+
+Array.prototype.transpose = function(){
+
+    let resArr = [];
     let rows = this.length;
     let cols = this[0].length;
 
-    let transArr = new Array(rows).fill(null).map(() => 
-        new Array(cols).fill(0)
-    );
-
-    for(let i=0; i<rows; i++){
+    for(let i=0; i<rows;i++){
+        let subArr = [];
         for(let j=0; j<cols; j++){
-            transArr[j][i] = this[i][j];
+            subArr.push(this[j][i])
         }
+        resArr.push(subArr);
     }
 
-    return transArr;
+    return resArr;
 }
 
 

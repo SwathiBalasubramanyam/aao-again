@@ -27,3 +27,4 @@ String.prototype.substrings = function(){
     return resArr;
 }
 
+console.log("swathi".substrings())

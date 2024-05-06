@@ -1,32 +1,17 @@
-// Your code here
-
 function Cat(name, owner){
     this.name = name;
     this.owner = owner;
-}
+    this.meow = function(){
+        console.log("this cat can meow");
+    }
 
+}
 Cat.prototype.cuteStatement = function(){
-    return `"${this.owner} loves ${this.name}"`;
+    return `"Everyone loves ${this.name}!"`
 }
 
-let cat1 = new Cat("puppy", "swathi");
-let cat2 = new Cat("pinky", "Priya");
+
+
+let cat1 = new Cat("pinky", "swathi");
 console.log(cat1.cuteStatement());
-
-Cat.prototype.cuteStatement = function(){
-    return `"Everyone loves ${this.name}!"`;
-}
-console.log(cat1.cuteStatement());
-
-Cat.prototype.meow = function () {
-    return 'meow';
-};
-
-console.log(cat1.meow());
-
-cat1.meow = function () {
-    return 'purr';
-};
-
-console.log(cat1.meow());
-console.log(cat2.meow());
+cat1.meow();
