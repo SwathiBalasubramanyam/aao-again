@@ -10,9 +10,9 @@ export default class FlappyBird {
   }
 
   restart(){
-    this.running = true;
     this.bird = new Bird(this.dimensions);
     this.level = new Level(this.dimensions);
+    this.running = true;
     this.animate();
   }
 

@@ -10,7 +10,7 @@ export default class Bird {
     constructor(dimensions){
         this.dimensions = dimensions;
         this.velocity = 0;
-        this.x = this.dimensions.width / 3;
+        this.x = this.dimensions.width / 4;
         this.y = this.dimensions.height / 2;
     }
 
@@ -20,8 +20,8 @@ export default class Bird {
     }
 
     animate(ctx){
-        this.move();
         this.drawBird(ctx);
+        this.move();
     }
 
     move(){
