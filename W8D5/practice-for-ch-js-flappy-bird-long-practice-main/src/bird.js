@@ -32,4 +32,19 @@ export default class Bird {
     flap(){
         this.velocity = CONSTANTS.FLAP_SPEED;
     }
+
+    getBounds() {
+        return {
+            left: this.x,
+            right: this.x + CONSTANTS.BIRD_WIDTH,
+            top: this.y,
+            bottom: this.y + CONSTANTS.BIRD_HEIGHT
+        };
+    }
+
+    outOfBounds() {
+        const aboveTheTop = this.y < 0;
+        const belowTheBottom = this.y + CONSTANTS.BIRD_HEIGHT > this.dimensions.height;
+        return aboveTheTop || belowTheBottom;
+    }
 }

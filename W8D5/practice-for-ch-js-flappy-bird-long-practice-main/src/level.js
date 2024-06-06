@@ -5,7 +5,8 @@ const LEVEL_CONSTANTS = {
   PIPE_WIDTH: 50,
   PIPE_START_X: 480,
   PIPE_START_YTOP: 0,
-  NUM_PIPES: 3
+  NUM_PIPES: 3,
+  PIPE_COLORS: ["green", "red", "teal"],
 }
 
 export default class Level {
@@ -35,7 +36,7 @@ export default class Level {
         pipeHeight: prev_pipe.pipeHeight+randDelta,
         pipeWidth: prev_pipe.pipeWidth,
         sx: prev_pipe.sx+LEVEL_CONSTANTS.GAP_BW_PIPES,
-        syTop: LEVEL_CONSTANTS.PIPE_START_YTOP,
+        syTop: prev_pipe.syTop,
       }
     }
     pipeAttrs.syBottom = pipeAttrs.pipeHeight + LEVEL_CONSTANTS.DIS_PAIR_PIPES
@@ -77,6 +78,20 @@ export default class Level {
   animate(ctx){
     this.drawBackground(ctx);
     this.drawPipes(ctx);
+  }
+
+  collidesWith(birdBounds){
+    for(let i=0; i<this.pipes.length; i++){
+      let pipeAttrs = this.pipes[i];
+
+      if (pipeAttrs.sx > birdBounds.right || pipeAttrs.sx+pipeAttrs.pipeWidth < birdBounds.left) {
+        continue;
+      }
+      if (pipeAttrs.pipeHeight > birdBounds.bottom || pipeAttrs.syBottom < birdBounds.top) {
+        continue;
+      }
+      return true;
+    }
   }
 
 }

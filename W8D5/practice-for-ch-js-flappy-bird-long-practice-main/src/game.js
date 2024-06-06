@@ -16,13 +16,25 @@ export default class FlappyBird {
     this.animate();
   }
 
+  gameOver() {
+    return (
+      this.level.collidesWith(this.bird.getBounds()) 
+    );
+  }
+
   animate(){
     this.level.animate(this.ctx);
     this.bird.animate(this.ctx);
 
+    if (this.gameOver()) {
+      alert("Game Over");
+      this.restart();
+    }
+    
     if (this.running) {
       requestAnimationFrame(this.animate.bind(this));
     }
+
   }
 
   play(){
